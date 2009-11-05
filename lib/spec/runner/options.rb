@@ -51,6 +51,8 @@ module Spec
       )
       attr_reader :colour, :differ_class, :files, :examples, :example_groups
 
+      attr_writer :drb_port
+      
       def initialize(error_stream, output_stream)
         @error_stream = error_stream
         @output_stream = output_stream
@@ -289,6 +291,10 @@ module Spec
         @dry_run == true
       end
 
+      def drb_port
+        @drb_port.to_i if @drb_port
+      end
+      
     protected
 
       def define_predicate_matchers
